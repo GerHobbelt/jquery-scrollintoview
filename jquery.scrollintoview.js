@@ -20,7 +20,8 @@
 
 	var settings = {
 		duration: "fast",
-		direction: "both"
+		direction: "both",
+		vertical_align: "bottom"
 	};
 
 	var rootrx = /^(?:html)$/i;
@@ -118,7 +119,14 @@
 					}
 					else if (rel.top > 0 && rel.bottom < 0)
 					{
-						animOptions.scrollTop = dim.s.scroll.top + Math.min(rel.top, -rel.bottom);
+						if (options.vertical_align == "top")
+						{
+							animOptions.scrollTop = dim.s.scroll.top + rel.top;
+						}
+						else
+						{
+							animOptions.scrollTop = dim.s.scroll.top + Math.min(rel.top, -rel.bottom);
+						}
 					}
 				}
 
